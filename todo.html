@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="todo.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+  <title>Frontend Mentor | Todo app</title>
+                 
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <!-- <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style> -->
+</head>
+<body>
+
+  
+
+
+
+<main>
+  <section id="topItem"></section>
+  <section id="botItem"></section>
+
+  <div id="midItem">
+    <div id="titleMode">
+      <h1>TODO</h1>
+      <button id="modeBtn"><img src="images/icon-moon.svg" alt="sun icon"></button>
+    </div>
+    <div id="addTodo" ><span class="bullet"> </span><input type='text' name='newTodo' placeholder="Create a new todo..."></div>
+       <div id="listDiv">
+      <ul id="listContainer">
+        
+        <li class="item"><span class="bullet"><input  id="1" type="checkbox"></span> <label for="1" class="todo">Complete online javascript course</label><img class="delete" src="images/icon-cross.svg"> </li>
+        <li class="item"><span class="bullet"><input id="2" type="checkbox"></span><label for="2" class="todo">Jog around the park 3x</label><img class="delete" src="images/icon-cross.svg"></li>
+        <li class="item"><span class="bullet"><input id="3" type="checkbox"></span><label for="3" class="todo">10min Meditation</label><img class="delete" src="images/icon-cross.svg"></li>
+        <li class="item"><span class="bullet"><input id="4" type="checkbox"></span><label for="4" class="todo">read</label><img class="delete" src="images/icon-cross.svg"></li>
+        <li class="item"><span class="bullet"><input id="5" type="checkbox"></span><label for="5" class="todo">pick up groceries</label><img class="delete" src="images/icon-cross.svg"></li>
+        <li class="item"><span class="bullet"><input id="6" type="checkbox"></span><label for="6" class="todo">complet todo app</label><img class="delete" src="images/icon-cross.svg"></li>
+        <li id="bottomMenu">
+          <p id="itemsLeft"><span>5 </span>items left</p>
+          <div>
+            <button class='midBtns' id="allButton">All</button> 
+            <button class='midBtns' id="activeButton">Active</button> 
+            <button class='midBtns' id="completedButton">Completed</button> 
+        </div>
+          <button id="clearButton">Clear completed</button>
+         
+        </li>
+      </ul>
+    </div>
+    <div id="tip">Drag and drop to reorder list</div>
+    <!-- <div id="mobMenu1">
+      <p id="itemsLeft"><span>5 </span>items left</p>
+      <button id="clearButton">Clear completed</button> 
+    </div> -->
+
+    <!-- <div id="bottomMenu">
+      <p id="itemsLeft"><span>5 </span>items left</p>
+      <button id="clearButton">All</button> 
+      <button id="clearButton">Active</button> 
+      <button id="clearButton">Completed</button> 
+      <button id="clearButton">C  lear completed</button> 
+    </div> -->
+  </div>
+</main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Add dynamic number --> 
+
+  <!-- All
+  Active 
+  Completed
+
+  Clear Completed
+
+  Drag and drop to reorder list
+
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Your Name Here</a>. -->
+  </div>
+</body>
+</html>

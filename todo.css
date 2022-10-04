@@ -1,0 +1,236 @@
+*{
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+    font-family: 'Josefin Sans', sans-serif;
+    
+}
+body{
+    background-color: black;
+    padding:5%; 
+    width:100%;
+    height:100vh;
+}
+main{
+    width:100%;
+    height:100vh;
+    position:relative;
+}
+#topItem{
+    width: 100%;
+    height: 36%;
+    background-image: url('images/bg-desktop-light.jpg');
+    background-size: contain;
+}
+#botItem{
+    width: 100%;
+    height: 64%;
+    background-color: #fff;
+}
+#midItem{
+    width:40%;
+    height: 100%;
+    /* border:1px solid red; */
+    
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+   
+}
+
+#titleMode{
+    width:100%;
+     height:18%;                                  /*title 20 */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* border:1px solid red; */
+}
+h1{
+   letter-spacing: 10px; 
+   color:#fff;
+}
+
+/* all buttons */
+button{
+    background-color:transparent;
+    border:none;
+}
+
+/* for dark and light mode */
+#modeBtn{
+    width:10%;
+}
+
+
+
+#listDiv{
+    /* position:relative; */
+    box-shadow: 0 35px 40px rgba(200,200,200,0.5);
+    border-radius: 5px;
+    width:100%;
+    height:55%;                                     /*listDiv  65*/
+    /* border:1px solid black; */
+    overflow:hidden;
+}
+#listContainer{
+    height:100%;   
+    /* border:2px solid black;                                */
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+
+li{
+    list-style: none;
+}
+
+#addTodo{
+    display:flex;
+    align-items:center;
+    width:100%;
+    height:8%;                                  /*addTodo 12*/
+    /* border: 2px solid green; */
+    background-color: #fff;
+    border-radius: 3px;
+    margin-bottom: 4%;
+   
+}
+input[type='text']{
+    width:85%;
+    font-size: 18px;
+    line-height:3em;
+    height: 90%;
+    border:none;
+    outline:none;
+    margin-right: 3%;
+    caret-color: hsl(220, 98%, 61%) ;
+}
+
+
+
+
+
+
+
+/* ----------------list item------------------------------ */
+
+.item{
+    display:flex;
+    align-items:center;
+    background-color: #fff;
+    height: 14.5%;                                   /*item  12*/
+    border-bottom: 1px solid #ccc;
+        font-size:18px;
+        
+    }
+
+.bullet{
+    margin:0 3%;
+    width:1.1em;
+    height: 1.1em;
+    /* color:red; */
+    border:1px solid #ccc;
+    border-radius:50%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    /* padding:5%; */
+}
+.bullet:hover{
+    border-color:hsl(220, 98%, 61%);
+}
+
+.checkedTodo{ /*to be assigned in js to .bullet when input type checkbox is checked*/
+    background-image:url('images/icon-check.svg'), linear-gradient(120deg,hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+    background-repeat: no-repeat;
+    background-position:center;
+}
+
+input[type='checkbox']{
+    width:0.7em;
+    height:0.7em;
+    opacity:0;
+    cursor:pointer;
+   
+}
+
+.todo{
+    width:82.5%;
+}
+.todo:hover + .delete,.delete:hover{
+    opacity:1;
+}
+
+
+
+
+.done{ /*to be assiged in js to .todo when task is completed*/
+    text-decoration:line-through;
+    opacity:0.4;
+}
+
+.delete{
+    cursor:pointer;
+    opacity:0;
+}
+
+
+
+
+
+
+/* ---------------------------------bottom menus------------------------------------ */
+
+
+
+
+#bottomMenu{
+    /* height: */
+    background-color: #fff;
+    height:13%;                         /*bottomMenu 9*/
+    /* border:1px solid green; */
+    display: flex;
+    justify-content: space-between ;
+    align-items: center;
+    padding:0 3% ;
+}
+
+#bottomMenu div{
+    /* border:2px solid red; */
+    width:40%;
+    text-align: center;
+}
+.midBtns{
+    font-weight:bold;
+}
+
+#itemsLeft{
+    display:inline-block;
+}
+
+#allButton,#activeButton,#completedButton,#clearButton,.todo{
+    cursor:pointer;
+}
+#activeButton{
+    margin:0 4%;
+}
+
+
+
+
+#tip{
+    width:100%;
+    height:15%;                                   /*tip 15 */
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    /* border:1px solid red;   */
+}
