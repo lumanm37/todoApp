@@ -8,3 +8,6 @@ document.querySelectorAll('.checkB').forEach(item => {
         event.target.parentElement.nextElementSibling.classList.toggle('done')
     })
   })
+
+
+ 
