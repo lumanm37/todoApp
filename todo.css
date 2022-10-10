@@ -117,19 +117,25 @@ button{
 #listDiv{
     /* position:relative; */
     box-shadow: var(--boxShadow);
-    border-radius: 5px;
+    /* border-radius: 5px; */
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
     width:100%;
-    height:55%;                                     /*listDiv  65*/
-    /* border:1px solid black; */
+    height:48%;                                     /*listDiv  55*/
+    /* border:1px solid red; */
     overflow:hidden;
 }
 #listContainer{
     height:100%;   
-    /* border:2px solid black;                                */
+    overflow: scroll;                                
     display:flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
+    background-color:var(--botBackgroundColor)
 }
+#listContainer::-webkit-scrollbar {
+    display: none;
+  }
 
 
 
@@ -145,14 +151,14 @@ li{
     /* border: 2px solid green; */
     background-color: var(--itemBackgroundColor);
     border-radius: 3px;
-    margin-bottom: 4%;
+    margin-bottom: 4.5%;
    
 }
 input[type='text']{
     width:85%;
+    height: 90%;
     font-size: 18px;
     line-height:3em;
-    height: 90%;
     border:none;
     outline:none;
     margin-right: 3%;
@@ -182,14 +188,16 @@ input[type='text']{
     display:flex;
     align-items:center;
     background-color:var(--itemBackgroundColor);
-    height: 14.5%;                                   /*item  12*/
+     height:16.6667%;                                   /*item  12 */
     border-bottom: 1px solid #979797;;
         font-size:18px;
         
     }
+   
+
 
 .bullet{
-    margin:0 3%;
+    margin: 2.8% 3%;
     width:1.1em;
     height: 1.1em;
     /* color:red; */
@@ -255,16 +263,21 @@ input[type='checkbox']{
 
 
 #bottomMenu{
-    /* height: */
+    width:100%;
+    height:7.5%;                         /*bottomMenu 9*/
+    display: none;
     background-color:var(--itemBackgroundColor);
     color:var(--bottomMenuTextColor);
-    height:13%;                         /*bottomMenu 9*/
-    /* border:1px solid green; */
     display: flex;
     justify-content: space-between ;
     align-items: center;
     padding:0 3% ;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius:5px;
+    /* border:1px solid green; */
 }
+
+
 
 #bottomMenuMob{
     display: none;
@@ -280,6 +293,11 @@ input[type='checkbox']{
     font-weight:bold;
     color:var(--bottomMenuTextColor);   
 }
+
+/* .sortedBy{
+    color:#3A7CFD;
+} */
+
 .midBtns:hover,#clearButton:hover{
 
     color:var(--buttonsHoverColor)

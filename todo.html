@@ -37,28 +37,32 @@
         <img id="sun" src="images/icon-sun.svg" alt="sun icon">
       </button>
     </div>
-    <div id="addTodo" ><span class="bullet"> </span><input type='text' name='newTodo' placeholder="Create a new todo..."></div>
-       <div id="listDiv">
+    <div id="addTodo" ><span class="bullet"> </span><input id="inputText" type='text' name='newTodo' placeholder="Create a new todo..."></div>
+      
+    <div id="listDiv">
       <ul id="listContainer">
         
-        <li class="item"><span class="bullet"><input class="checkB" id="1" type="checkbox"></span> <label for="1" class="todo">Complete online javascript course</label><img class="delete" src="images/icon-cross.svg"> </li>
-        <li class="item"><span class="bullet"><input class="checkB" id="2" type="checkbox"></span><label for="2" class="todo">Jog around the park 3x</label><img class="delete" src="images/icon-cross.svg"></li>
-        <li class="item"><span class="bullet"><input class="checkB" id="3" type="checkbox"></span><label for="3" class="todo">10min Meditation</label><img class="delete" src="images/icon-cross.svg"></li>
-        <li class="item"><span class="bullet"><input class="checkB" id="4" type="checkbox"></span><label for="4" class="todo">read</label><img class="delete" src="images/icon-cross.svg"></li>
-        <li class="item"><span class="bullet"><input class="checkB" id="5" type="checkbox"></span><label for="5" class="todo">pick up groceries</label><img class="delete" src="images/icon-cross.svg"></li>
-        <li class="item"><span class="bullet"><input class="checkB" id="6" type="checkbox"></span><label for="6" class="todo">complet todo app</label><img class="delete" src="images/icon-cross.svg"></li>
-        <li id="bottomMenu">
-          <p id="itemsLeft"><span>5 </span>items left</p>
-          <div>
-            <button class='midBtns' id="allButton">All</button> 
-            <button class='midBtns' id="activeButton">Active</button> 
-            <button class='midBtns' id="completedButton">Completed</button> 
-        </div>
-          <button id="clearButton">Clear completed</button>
-         
-        </li>
+        <!-- <li id='1' class="item"><span class="bullet"><input class="checkB" id="1" type="checkbox"></span> <label for="1" class="todo">Complete online javascript course</label><img class="delete" src="images/icon-cross.svg"> </li>
+        <li id='2' class="item"><span class="bullet"><input class="checkB" id="2" type="checkbox"></span><label for="2" class="todo">Jog around the park 3x</label><img class="delete" src="images/icon-cross.svg"></li>
+        <li id='3' class="item"><span class="bullet"><input class="checkB" id="3" type="checkbox"></span><label for="3" class="todo">10min Meditation</label><img class="delete" src="images/icon-cross.svg"></li>
+        <li id='4' class="item"><span class="bullet"><input class="checkB" id="4" type="checkbox"></span><label for="4" class="todo">read</label><img class="delete" src="images/icon-cross.svg"></li>
+        <li id='5' class="item"><span class="bullet"><input class="checkB" id="5" type="checkbox"></span><label for="5" class="todo">pick up groceries</label><img class="delete" src="images/icon-cross.svg"></li>
+        <li id='6' class="item"><span class="bullet"><input class="checkB" id="6" type="checkbox"></span><label for="6" class="todo">complet todo app</label><img class="delete" src="images/icon-cross.svg"></li>
+           -->
       </ul>
     </div>
+
+    <div id="bottomMenu">  
+      <p id="itemsLeft"><span id="itemLeft">5 </span> items left</p>
+      <div id="midButtons">
+        <button class='midBtns' id="allButton">All</button> 
+        <button class='midBtns' id="activeButton">Active</button> 
+        <button class='midBtns' id="completedButton">Completed</button> 
+      </div>
+      <button id="clearButton">Clear completed</button>
+    </div>
+        
+    
 
        <div id="bottomMenuMob">
       <!-- <p id="itemsLeft"><span>5 </span>items left</p> -->
