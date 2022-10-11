@@ -16,17 +16,20 @@ const onPageLoad=()=>{
     const newEvent=new Event('click');
     // localStorage.removeItem('todoArr');
     // localStorage.clear();
-    const allButton=document.querySelector('#allButton')
+    let allButton;
+    if(screen.width>=601){
+        allButton=document.querySelector('#allButton')
+    }else{allButton=document.querySelector('#allButtonMob')}
+    
     if(localStorage.length){
-        console.log('itemExist',localStorage.length);
         todoArr=JSON.parse(localStorage.getItem("todoArr"));
-        console.log(todoArr);
+       
         allButton.dispatchEvent(newEvent)
            
     }else{
-        console.log('nothing exists')
+       
         allButton.dispatchEvent(newEvent)
-        // localStorage.setItem("todoArr", JSON.stringify(todoArr));
+       
     }
 }
 
@@ -37,7 +40,7 @@ const idGenerator=()=>{
 
 const noOfUncompleted=()=>{
     let unCompleted=todoArr.filter(item =>item.isComplete===false)
-    console.log(unCompleted.length)
+    
     return unCompleted.length;
 }
 
@@ -49,9 +52,10 @@ const onAdd=(event)=>{
         listContainer.prepend(itemMade);
         event.target.value='';
         todoArr.push({item:inputText.trim(),id:newId,isComplete:false})
-        console.log(todoArr)
+        
         
         itemLeft.innerHTML=noOfUncompleted();
+      
     }
 }
 
@@ -99,10 +103,11 @@ const onClearCompleted=()=>{
     
     
     todoArr=todoArr.filter(item =>item.isComplete===false)
+    
 
 }
 
- 
+
 
   
 
@@ -110,8 +115,10 @@ const onClearCompleted=()=>{
 const onSort=(event)=>{
     document.querySelectorAll('.midBtns').forEach(item => {
         item.style='color:#9495A5'
+        item.classList.remove('selectedButton')
     })
     event.target.style='color:#3A7CFD;'
+    event.target.classList.add('selectedButton')
 
      listContainer.innerHTML=''
     const val=(typeof(event.target.getAttribute)==='function')?event.target.getAttribute('id'):'all';
@@ -120,43 +127,80 @@ const onSort=(event)=>{
    
     todoArr.forEach((ele)=>{
         
-        if(val==='completedButton'){
-            // console.log(val);
+        if(val==='completedButton' || val==='completedButtonMob'){
+            
             if(ele.isComplete===true){
-                console.log('isComplete is true');
+                
                 const itemMade=makeItem(ele.item, ele.id ,ele.isComplete);
                 listContainer.appendChild(itemMade);
             }
         }
-        else if(val==='activeButton'){
-            // console.log(val)
+        else if(val==='activeButton' || val==='activeButtonMob'){
+           
             if(ele.isComplete===false){
                 const itemMade=makeItem(ele.item, ele.id ,ele.isComplete);
                 listContainer.appendChild(itemMade); 
             }
         }
         else{
-            // console.log(val)
+           
             const itemMade=makeItem(ele.item, ele.id ,ele.isComplete);
             listContainer.appendChild(itemMade)
         }
        
     })
 
+
 }
   
 
+
+
+
+const onDragOver=(event)=>{
+    event.preventDefault();
+    return false;
+}
+const onDragEnter=(e)=>{
+    e.target.classList.add('over')
+}
+const onDragLeave=(e)=>{
+    e.target.classList.remove('over')
+}
+
+
+let draggedItemId;
+const onDragStart=(e)=>{
+  
+    draggedItemId=+e.target.closest('li').getAttribute('id')
+}
+
+const onDragDrop=(e)=>{
+    let droppedItemId=+e.target.closest('li').getAttribute('id')
+    const newEvent=new Event('click');
+    const selectedSortingButton=document.querySelector('.selectedButton')
+    const itemOneInd=todoArr.findIndex((ele) => ele.id===draggedItemId);
+    const itemTwoInd=todoArr.findIndex((ele) => ele.id===droppedItemId);
+
+    todoArr[itemOneInd].id=droppedItemId;
+    todoArr[itemTwoInd].id=draggedItemId;
+
+    selectedSortingButton.dispatchEvent(newEvent)
+}
+
+
   
  
-// manufacturer
-// const onAddToList=(event)=>{
-const makeItem=(item,id,isComplete)=>{
-    // const inputText=event.target.value; 
 
-    // if(inputText.length>0){
+const makeItem=(item,id,isComplete)=>{
+
          let listEle=document.createElement('li');
         listEle.setAttribute('class','item');
         listEle.setAttribute('id',id);
+        listEle.setAttribute('draggable',true);
+
+
+
     let spanEle=document.createElement('span');
         spanEle.setAttribute('class','bullet');
         
@@ -185,23 +229,18 @@ const makeItem=(item,id,isComplete)=>{
     inputEle.addEventListener('click', onCheckedAsCompleted);
     imgEle.addEventListener('click',onDelete);
 
+
+    listEle.addEventListener('dragstart', onDragStart);
+    listEle.addEventListener('dragenter', onDragEnter);
+    listEle.addEventListener('dragleave', onDragLeave);
+
+    
+    listContainer.addEventListener('dragover', onDragOver);
+    listEle.addEventListener('drop',onDragDrop);
+
     return listEle;
 
-    // listContainer.prepend(listEle)
-
-   
-    // event.target.value='';
-    // }
-   
 }
-
-
-
-
-
-
-
-
 
 
 
@@ -216,16 +255,6 @@ const makeItem=(item,id,isComplete)=>{
 // listens for new tasks
 document.querySelector('#inputText').addEventListener('change',onAdd)
 
-//listens to bullet when checked ///test with input.checked.
-document.querySelectorAll('.checkB').forEach(item => { //add to manufaturing
-    item.addEventListener('click', onCheckedAsCompleted)
-  })
-
-//listens to delete icon  ///test with input.checked.
-document.querySelectorAll('.delete').forEach(item => { //add to manufaturing
-    item.addEventListener('click',onDelete)
-})
-
 // theme(sun/moon) button
 document.querySelector('#modeBtn').addEventListener('click',function(){
     document.body.classList.toggle('dark')
@@ -235,8 +264,16 @@ document.querySelector('#modeBtn').addEventListener('click',function(){
 document.getElementById('clearButton').addEventListener('click',onClearCompleted)
 
 // sortButtoms
-document.getElementById('allButton').addEventListener('click',onSort)
-document.getElementById('activeButton').addEventListener('click',onSort)
-document.getElementById('completedButton').addEventListener('click',onSort)
+if(screen.width>=601){
+    ['allButton','activeButton','completedButton'].forEach(ele=>{
+        document.getElementById(ele).addEventListener('click',onSort)
+    })
+}else{
+    ['allButtonMob','activeButtonMob','completedButtonMob'].forEach(ele=>{
+        document.getElementById(ele).addEventListener('click',onSort)
+    })
+}
+
+
 window.addEventListener('load',onPageLoad);
 window.addEventListener('beforeunload',function(){localStorage.setItem("todoArr", JSON.stringify(todoArr));});
