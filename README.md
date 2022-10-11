@@ -6,10 +6,10 @@
 
 
 ### DESCRIPTION
- MODELING OF SITE FROM DESIGN TEMPLETE(FIGMA file)
+ FULLSTACK TODO APPLICATION
 
  ### PROJECT STATUS
- Only markup and styling. No script included.
+ COMPLETED
 
 ### LANGUAGES
 - **MARKUP**    : HTML
@@ -26,7 +26,7 @@
 6. Clear all completed to-dos.
 7. Toggle light and dark mode
 8. Drag and drop to reorder items on list
-9. Full stack application
+
 
 
 **APIs**
