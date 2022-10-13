@@ -16,7 +16,7 @@ let emptyList=document.querySelector('.emptyList')
 const onPageLoad=()=>{
     const newEvent=new Event('click');
     // localStorage.removeItem('todoArr');
-    localStorage.clear();
+    // localStorage.clear();
     let allButton;
     if(screen.width>=601){
         allButton=document.querySelector('#allButton')
