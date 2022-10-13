@@ -10,12 +10,13 @@ let todoArr=[
 
 const listContainer=document.getElementById('listContainer');
 let itemLeft=document.getElementById('itemLeft');
+let emptyList=document.querySelector('.emptyList')
 
 
 const onPageLoad=()=>{
     const newEvent=new Event('click');
     // localStorage.removeItem('todoArr');
-    // localStorage.clear();
+    localStorage.clear();
     let allButton;
     if(screen.width>=601){
         allButton=document.querySelector('#allButton')
@@ -48,6 +49,12 @@ const onAdd=(event)=>{
     let newId=todoArr.length+1;
     const inputText=event.target.value; 
     if(inputText.trim().length>0){ //test trim
+
+        if(todoArr.length<=0){
+            listContainer.innerHTML=''
+        }
+
+
         const itemMade=makeItem(inputText,newId,false);
         listContainer.prepend(itemMade);
         event.target.value='';
@@ -92,6 +99,10 @@ const onDelete=(event)=>{
     const itemInd=todoArr.findIndex((ele) => ele.id===parseInt(id) &&ele.item===item);
     todoArr.splice(itemInd,1)
     itemLeft.innerHTML=noOfUncompleted();
+
+    if(todoArr.length<=0){
+        listContainer.innerHTML='<p class="emptyList">Empty List</p>'
+    }
 }
 
  
@@ -104,6 +115,9 @@ const onClearCompleted=()=>{
     
     todoArr=todoArr.filter(item =>item.isComplete===false)
     
+    if(todoArr.length<=0){
+        listContainer.innerHTML='<p class="emptyList">Empty List</p>'
+    }
 
 }
 
@@ -119,8 +133,12 @@ const onSort=(event)=>{
     })
     event.target.style='color:#3A7CFD;'
     event.target.classList.add('selectedButton')
+    listContainer.innerHTML=''
+   
+    if(todoArr.length<=0){
+        listContainer.innerHTML='<p class="emptyList">Empty List</p>'
+    }
 
-     listContainer.innerHTML=''
     const val=(typeof(event.target.getAttribute)==='function')?event.target.getAttribute('id'):'all';
    
     todoArr.sort((a,b)=>(a.id>b.id) ? -1 : 1)
@@ -148,6 +166,8 @@ const onSort=(event)=>{
             listContainer.appendChild(itemMade)
         }
        
+       
+
     })
 
 
